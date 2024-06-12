@@ -1,0 +1,6 @@
+rnastructure: {rnastructure}
+contrafold_2: {contrafold}
+linearfold: {linearfold}
+
+#TMP: location for tmp files for packages. Update to where you want your tmp files stored.
+TMP: /tmp

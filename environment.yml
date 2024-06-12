@@ -1,0 +1,27 @@
+name: rna_sdb
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - bioconda
+dependencies:
+  - cd-hit=4.8.1
+  - contrafold=2.02
+  - dask=2024.4.1
+  - einops=0.7.0
+  - infernal=1.1.5
+  - ipykernel
+  - lightning=2.2.3
+  - linearfold=1.0.1
+  - pandas=2.2.2
+  - pyarrow=15.0.2
+  - python=3.12.2
+  - pytorch=2.3.0
+  - pytorch-cuda=12.1
+  - rnastructure=6.4
+  - scikit-learn=1.5.0
+  - seaborn
+  - tqdm
+  - wandb
+  - pip:
+    - viennarna==2.6.4

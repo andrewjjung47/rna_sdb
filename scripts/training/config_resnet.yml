@@ -1,0 +1,78 @@
+# lightning.pytorch==2.2.3
+fit:
+  trainer:
+    callbacks: 
+      - class_path: lightning.pytorch.callbacks.ModelSummary
+        init_args:
+          max_depth: 3
+      - class_path: lightning.pytorch.callbacks.EarlyStopping
+        init_args:
+          monitor: val/f1
+          patience: 10
+          verbose: True
+          mode: max
+      - class_path: lightning.pytorch.callbacks.ModelCheckpoint
+        init_args:
+          save_top_k: 1
+          monitor: val/f1
+          mode: max
+          save_last: False
+          verbose: True
+    max_epochs: 60
+    limit_train_batches: 1348 # effective number of samples per epoch = 10,784 (8 * 1348) which matches with bpRNA-TR0
+    limit_val_batches: 0.1
+    accumulate_grad_batches: 4 # effective batch_size = 8 (2 * 4)
+    use_distributed_sampler: False
+    logger:
+      - class_path: lightning.pytorch.loggers.WandbLogger
+        init_args:
+          group: resnet
+          log_model: True
+    # Override defaults for callbacks
+    enable_model_summary: False
+  model:
+    class_path: rna_sdb.models.resnet.ResNetModule
+    init_args:
+      threshold: 0.5
+  data:
+    class_path: rna_sdb.data.RNASDBDatasetModule
+    init_args:
+      batch_size: 2
+      test_batch_size: 1
+      max_seq_len: 450
+      num_workers: 12
+  optimizer:
+    class_path: torch.optim.Adam
+    init_args: # Use the values mentioned in RNA-FM paper
+      lr: 0.0001
+      weight_decay: 0.001
+  # Custom configs
+  checkpoint_prefix: rnasdb_resnet
+test:
+  trainer:
+    logger:
+      - class_path: lightning.pytorch.loggers.WandbLogger
+        init_args:
+          group: resnet
+          log_model: False
+    callbacks: 
+      - class_path: lightning.pytorch.callbacks.ModelSummary
+        init_args:
+          max_depth: 3
+    use_distributed_sampler: False
+    limit_test_batches: 1.0
+    # Override defaults for callbacks
+    enable_model_summary: False
+  model:
+    class_path: rna_sdb.models.resnet.ResNetModule
+    init_args:
+      threshold: 0.5
+  data:
+    class_path: rna_sdb.data.RNASDBDatasetModule
+    init_args:
+      batch_size: 1
+      test_batch_size: 1
+      num_workers: 12
+      max_seq_len: 450
+  # Custom configs
+  checkpoint_prefix: rnasdb_resnet_eval

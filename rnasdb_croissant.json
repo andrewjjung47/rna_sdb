@@ -1,0 +1,173 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "name": "RNA-SDB",
+  "description": "RNA-SDB is a large-scale RNA SS dataset that will improve training and benchmarking of deep learning models for RNA SS prediction. RNA-SDB consists of 3,100,307 structures from 4,168 RNA families, which has 200-fold more RNA structures and 1.5 times more RNA families than the largest existing dataset. Furthermore, RNA-SDB is designed with family-fold CV, in which training and test sets are split by families, to allow for a rigorous assessment of inter-family generalization.",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "url": "https://github.com/andrewjjung47/rna_sdb",
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "gd-repository",
+      "name": "gd-repository",
+      "description": "RNA-SDB repository on Google Drive.",
+      "contentUrl": "https://drive.google.com/drive/folders/1fYIsnzLQEFDiwZd0IiA1LF-tzPr16fF9?usp=drive_link",
+      "encodingFormat": "git+https",
+      "sha256": "main"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "pq-files",
+      "name": "pq-files",
+      "description": "Parquet files for training and test splits that are hosted on the Google Drive.",
+      "containedIn": {
+        "@id": "gd-repository"
+      },
+      "encodingFormat": "application/x-parquet",
+      "includes": "split_*_cache_*.pq"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "pq",
+      "name": "pq",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "pq/seq_id",
+          "name": "seq_id",
+          "description": "Rfam sequence ID",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "pq-files"
+            },
+            "extract": {
+              "column": "seq_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "pq/seq",
+          "name": "seq",
+          "description": "RNA sequence",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "pq-files"
+            },
+            "extract": {
+              "column": "seq"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "pq/db_structure",
+          "name": "db_structure",
+          "description": "RNA secondary structure, represented as in dot-bracket notation",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "pq-files"
+            },
+            "extract": {
+              "column": "db_structure"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "pq/rfam_family",
+          "name": "rfam_family",
+          "description": "RNA family",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "pq-files"
+            },
+            "extract": {
+              "column": "rfam_family"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "pq/cluster_id",
+          "name": "cluster_id",
+          "description": "Cluster ID",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileSet": {
+              "@id": "pq-files"
+            },
+            "extract": {
+              "column": "cluster_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "pq/cluster_size",
+          "name": "cluster_size",
+          "description": "Cluster size",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileSet": {
+              "@id": "pq-files"
+            },
+            "extract": {
+              "column": "cluster_size"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

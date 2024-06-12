@@ -1,0 +1,9 @@
+[submodule "external/mxfold2"]
+	path = external/mxfold2
+	url = https://github.com/mxfold/mxfold2.git
+[submodule "external/rna3db"]
+	path = external/rna3db
+	url = https://github.com/marcellszi/rna3db.git
+[submodule "external/arnie"]
+	path = external/arnie
+	url = git@github.com:andrewjjung47/arnie.git
