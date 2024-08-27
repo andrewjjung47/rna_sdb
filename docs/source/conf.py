@@ -6,6 +6,8 @@ project = 'rna_sdb'
 copyright = '2024'
 author = 'Andrew Jung'
 
+import rna_sdb
+
 release = '0.1'
 version = '0.1.0'
 
