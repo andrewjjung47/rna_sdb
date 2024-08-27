@@ -128,7 +128,7 @@ def read_bpseq(
     Returns:
         str: sequence
         Tuple[List[int], List[int]]: base-pair indices, represented
-            as two lists of 0-based indices of the first and second bases in base pairs
+        as two lists of 0-based indices of the first and second bases in base pairs
     """
     seq, pair_indices = "", ([], [])
     with open(file_path, "r") as f:

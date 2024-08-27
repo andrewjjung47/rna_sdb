@@ -16,9 +16,13 @@ Datasets
 
 .. automethod:: rna_sdb.datasets.load_archiveII
 
+.. automethod:: rna_sdb.datasets.load_bprna
 
-TODO more to be added!
+.. automethod:: rna_sdb.datasets.load_bprna_new
 
+.. automethod:: rna_sdb.datasets.load_rfamseq_fasta
+
+.. automethod:: rna_sdb.datasets.load_rnastralign
 
 
 utils
@@ -32,5 +36,4 @@ utils
 
 .. automethod:: rna_sdb.utils.write_fasta
 
-
-TODO more to be added!
+.. automethod:: rna_sdb.utils.read_bpseq

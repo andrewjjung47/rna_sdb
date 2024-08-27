@@ -3,8 +3,8 @@
 # -- Project information
 
 project = 'rna_sdb'
-copyright = 'abc'
-author = 'abc'
+copyright = '2024'
+author = 'Andrew Jung'
 
 release = '0.1'
 version = '0.1.0'
