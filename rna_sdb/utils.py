@@ -32,9 +32,9 @@ def read_fasta(
     Args:
         file_path (Union[str, Path]): Path to the fasta file.
         filter_non_canonical (bool, optional): Filter out non-canonical bases.
-            Canonical bases are 'A', 'C', 'G', 'U', 'T'. Defaults to False.
+        Canonical bases are 'A', 'C', 'G', 'U', 'T'. Defaults to False.
         convert_to_upper (bool, optional): Convert sequences to uppercase.
-            Defaults to True.
+        Defaults to True.
         convert_u_to_t (bool, optional): Convert 'U' to 'T'. Defaults to False.
 
     Returns:
