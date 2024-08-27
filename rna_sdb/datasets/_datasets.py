@@ -261,9 +261,9 @@ def load_rfamseq_fasta(
     Args:
         rfam_family (str): Rfam family
         filter_non_canonical (bool, optional): Filter out non-canonical bases.
-            Defaults to False.
+        Defaults to False.
         convert_to_upper (bool, optional): Convert sequence to uppercase.
-            Defaults to True.
+        Defaults to True.
         convert_u_to_t (bool, optional): Convert U to T. Defaults to False.
 
     Returns:

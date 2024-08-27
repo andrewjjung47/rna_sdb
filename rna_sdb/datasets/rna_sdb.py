@@ -76,7 +76,7 @@ class RNASDB:
             df_train (pd.DataFrame): Training set
             val_ratio (float, optional): Ratio of validation set. Defaults to 0.1.
             random_state (Optional[int], optional): Random state for reproducibility.
-                Defaults to None.
+            Defaults to None.
 
         Returns:
             Tuple[pd.DataFrame, pd.DataFrame]: Training and validation sets
