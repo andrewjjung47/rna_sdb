@@ -7,5 +7,5 @@ setup(
     license="Apache License 2.0",
     author="Andrew Jung",
     author_email="andrewjung@psi.toronto.edu",
-    packages=["rna_sdb"],
+    packages=["rna_sdb", "rna_sdb.datasets"],
 )
